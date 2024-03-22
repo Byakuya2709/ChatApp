@@ -31,18 +31,18 @@ public class Client extends Thread{
     @Override
     public void run() {
        
-
-        DataBaseConnection connection = DataBaseConnection.getInstance("test1");
-        Connection dbConnection;
-         try {
-             dbConnection = (Connection) connection.connectToDatabase();
-             System.out.println("Kết nối thành công tới: " + dbConnection);
-            SwingUtilities.invokeLater(() -> {
-                signupView sign = new signupView(); // Create a new instance of signupView
-    });
-         } catch (SQLException ex) {
-             java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-         }
+//
+//        DataBaseConnection connection = DataBaseConnection.getInstance("chatapp");
+//        Connection dbConnection;
+//        try {
+//            dbConnection = (Connection) connection.connectToDatabase();
+//            System.out.println("Kết nối thành công tới: " + dbConnection);
+//        } catch (SQLException ex) {
+//            System.out.println("Kết nối that bai ");
+//        }
+        SwingUtilities.invokeLater(() -> {
+            signupView sign = new signupView(); // Create a new instance of signupView
+        });
             
     }
     

@@ -8,9 +8,15 @@ package views;
 
 
 
+import com.mysql.jdbc.Connection;
+import connection.DataBaseConnection;
 import controller.authenController;
 import java.awt.HeadlessException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.Model_Account;
 import model.Model_User;
 import views.signupView;
 
@@ -19,7 +25,7 @@ import views.signupView;
  * @author admin
  */
 public class loginView extends javax.swing.JFrame {
-
+  authenController controller = new authenController();
     private void showErrorDialog(String errorMessage) {
         JOptionPane.showMessageDialog(this, errorMessage, "ERROR", JOptionPane.WARNING_MESSAGE);
     }
@@ -203,13 +209,13 @@ public class loginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void login_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_btnActionPerformed
-   
+        
        try {
             authenController controller = new authenController();
             String userName = this.userName_text != null ? this.userName_text.getText() : "";
             char[] passwordChars = this.password_text.getPassword();
 
-            if (controller.userExists(userName)==false) {
+            if (controller.accountExists(userName)==false) {
                 showErrorDialog("Tài khoản này không tồn tại");
                 return;
             }
@@ -218,13 +224,13 @@ public class loginView extends javax.swing.JFrame {
                 showErrorDialog("Không được để trống mật khẩu!!!");
                 return;
             }
-            Model_User user = controller.getOneUser(userName);
+            Model_Account account = controller.getOneAccount(userName);
             
-            if (user==null){
-                showErrorDialog("Tài khoản không tồn tại");
+            if (account==null){
+                showErrorDialog("Tài khoản không tồn tại!");
                 return;
             }
-             if (!new String(passwordChars).trim().equals(user.getPassword())) {
+             if (!new String(passwordChars).trim().equals(account.getPassword())) {
                 showErrorDialog("Sai mật khẩu");
                 return;
             }

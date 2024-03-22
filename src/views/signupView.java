@@ -6,6 +6,7 @@ package views;
 
 
 import com.mysql.jdbc.Connection;
+import connection.DataBaseConnection;
 import controller.authenController;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ import model.Model_User;
  * @author admin
  */
 public class signupView extends javax.swing.JFrame {
-
+  authenController controller = new authenController();
 private void showErrorDialog(String errorMessage) {
     JOptionPane.showMessageDialog(this, errorMessage, "ERROR", JOptionPane.WARNING_MESSAGE);
 }
@@ -49,7 +50,7 @@ private void showErrorDialog(String errorMessage) {
         SignupForm = new javax.swing.JPanel();
         form_title = new javax.swing.JLabel();
         userName_lable = new javax.swing.JLabel();
-        userName_text = new javax.swing.JTextField();
+        fullName_text = new javax.swing.JTextField();
         passwordConfirm_lable = new javax.swing.JLabel();
         passwordConfirm_text = new javax.swing.JPasswordField();
         signup_btn = new javax.swing.JButton();
@@ -60,6 +61,8 @@ private void showErrorDialog(String errorMessage) {
         genderFemale = new javax.swing.JCheckBox();
         genderMale = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
+        userName_text = new javax.swing.JTextField();
+        userName_lable1 = new javax.swing.JLabel();
         form_left = new javax.swing.JPanel();
         left_title = new javax.swing.JLabel();
         changeForm_btn = new javax.swing.JButton();
@@ -85,9 +88,9 @@ private void showErrorDialog(String errorMessage) {
         userName_lable.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         userName_lable.setText("Tên tài khoản");
 
-        userName_text.addActionListener(new java.awt.event.ActionListener() {
+        fullName_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userName_textActionPerformed(evt);
+                fullName_textActionPerformed(evt);
             }
         });
 
@@ -149,59 +152,76 @@ private void showErrorDialog(String errorMessage) {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Giới Tính");
 
+        userName_text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userName_textActionPerformed(evt);
+            }
+        });
+
+        userName_lable1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        userName_lable1.setText("Họ và tên");
+
         javax.swing.GroupLayout SignupFormLayout = new javax.swing.GroupLayout(SignupForm);
         SignupForm.setLayout(SignupFormLayout);
         SignupFormLayout.setHorizontalGroup(
             SignupFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SignupFormLayout.createSequentialGroup()
-                .addGap(394, 394, 394)
-                .addComponent(signup_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(261, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignupFormLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(260, Short.MAX_VALUE)
                 .addGroup(SignupFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignupFormLayout.createSequentialGroup()
-                        .addComponent(form_title)
-                        .addGap(250, 250, 250))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignupFormLayout.createSequentialGroup()
-                        .addGroup(SignupFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(SignupFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(userName_lable1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fullName_text, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userName_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(passwordConfirm_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(password_lable1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(passwordConfirm_text, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numberPhone_text, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numberPhone_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(userName_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(userName_text, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(SignupFormLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(SignupFormLayout.createSequentialGroup()
-                                .addComponent(genderMale, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(genderFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(171, 171, 171))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignupFormLayout.createSequentialGroup()
+                                .addGroup(SignupFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(SignupFormLayout.createSequentialGroup()
+                                        .addComponent(genderMale, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(genderFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(SignupFormLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(SignupFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(numberPhone_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numberPhone_text, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(170, 170, 170))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignupFormLayout.createSequentialGroup()
+                        .addComponent(form_title)
+                        .addGap(272, 272, 272))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignupFormLayout.createSequentialGroup()
+                        .addComponent(signup_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(293, 293, 293))))
         );
         SignupFormLayout.setVerticalGroup(
             SignupFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SignupFormLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addGap(27, 27, 27)
                 .addComponent(form_title)
-                .addGap(32, 32, 32)
+                .addGap(30, 30, 30)
+                .addComponent(userName_lable1)
+                .addGap(15, 15, 15)
+                .addComponent(fullName_text, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(userName_lable)
                 .addGap(15, 15, 15)
                 .addComponent(userName_text, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(numberPhone_lable)
-                .addGap(15, 15, 15)
-                .addComponent(numberPhone_text, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SignupFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(numberPhone_lable))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(SignupFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genderMale)
-                    .addComponent(genderFemale))
-                .addGap(15, 15, 15)
+                    .addComponent(genderFemale)
+                    .addComponent(numberPhone_text, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addComponent(password_lable1)
                 .addGap(15, 15, 15)
                 .addComponent(password_text, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,11 +231,11 @@ private void showErrorDialog(String errorMessage) {
                 .addComponent(passwordConfirm_text, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(signup_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         form_title.getAccessibleContext().setAccessibleParent(this);
-        userName_text.getAccessibleContext().setAccessibleName("");
+        fullName_text.getAccessibleContext().setAccessibleName("");
         signup_btn.getAccessibleContext().setAccessibleName("");
 
         getContentPane().add(SignupForm);
@@ -272,21 +292,29 @@ private void showErrorDialog(String errorMessage) {
 
     
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
-        authenController controller = new authenController();
+        
+        
+      
        
-
         String gender = genderMale.isSelected() ? "Nam" : genderFemale.isSelected() ? "Nữ" : "";
         String numberPhone = this.numberPhone_text != null ? this.numberPhone_text.getText() : "";
-        String userName = this.userName_text != null ? this.userName_text.getText() : "";
+        String userName = this.fullName_text != null ? this.fullName_text.getText() : "";
         char[] passwordChars = this.password_text.getPassword();
         char[] confirmPasswordChars = this.passwordConfirm_text.getPassword();
+       
+        
         
         
         if (userName.trim().isEmpty() || userName.trim().length() <= 6) {
-            showErrorDialog("Tài khoản không được dưới 6 ký tự!!!");
+            showErrorDialog("Họ và tên không được dưới 6 ký tự!!!");
             return;
         }
-
+         String account = this.userName_text != null ? this.userName_text.getText() : "";
+        if (account.trim().isEmpty() || account.trim().length() <= 6 || account.contains(" ")) {
+            showErrorDialog("Tài khoản không có dấu cách và tên không được dưới 6 ký tự!!!");
+            return;
+        }
+        
         if (numberPhone.trim().isEmpty()) {
             showErrorDialog("Số điện thoại không được để trống!!!");
             return;
@@ -305,8 +333,8 @@ private void showErrorDialog(String errorMessage) {
             showErrorDialog("Mật khẩu phải có ít nhất 8 ký tự, 1 ký tự HOA, 1 ký tự thường và 1 số!!!");
             return;
         }
-       if (controller.userExists(userName)!=false) {
-            showErrorDialog("Tài Khoản" + userName +" đã tồn tại!!!");
+       if (controller.accountExists(account)!=false) {
+            showErrorDialog("Tài Khoản" + account +" đã tồn tại!!!");
             return;
         }
        if (controller.userExists(num)!=false) {
@@ -325,14 +353,24 @@ private void showErrorDialog(String errorMessage) {
         
         
   
-        String message = controller.createUser(userName,String.valueOf(passwordChars),num,gender);
-        JOptionPane.showMessageDialog(this,message, "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+        int userID = controller.createUser(userName,num, gender);
+        if (userID == -  1) {
+            JOptionPane.showMessageDialog(this, "Tạo Tài Khoản Thất Bại", "Error", JOptionPane.ERROR_MESSAGE);
+              return;
+              
+        } else {
+            boolean isSuccess =controller.createAccount(account,String.valueOf(passwordChars),userID);
+            if ( isSuccess ==true)
+                JOptionPane.showMessageDialog(this, "Tạo Tài Khoản Thành Công", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+            else JOptionPane.showMessageDialog(this, "Tạo Tài Khoản Thất Bại", "Error", JOptionPane.ERROR_MESSAGE);
+    }
         
+
     }//GEN-LAST:event_signup_btnActionPerformed
 
-    private void userName_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userName_textActionPerformed
+    private void fullName_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullName_textActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userName_textActionPerformed
+    }//GEN-LAST:event_fullName_textActionPerformed
 
     private void passwordConfirm_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordConfirm_textActionPerformed
         // TODO add your handling code here:
@@ -365,12 +403,17 @@ private void showErrorDialog(String errorMessage) {
         // TODO add your handling code here:
     }//GEN-LAST:event_genderMaleMouseClicked
 
+    private void userName_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userName_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userName_textActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel SignupForm;
     private javax.swing.JButton changeForm_btn;
     private javax.swing.JPanel form_left;
     private javax.swing.JLabel form_title;
+    private javax.swing.JTextField fullName_text;
     private javax.swing.JCheckBox genderFemale;
     private javax.swing.JCheckBox genderMale;
     private javax.swing.JLabel jLabel1;
@@ -383,6 +426,7 @@ private void showErrorDialog(String errorMessage) {
     private javax.swing.JPasswordField password_text;
     private javax.swing.JButton signup_btn;
     private javax.swing.JLabel userName_lable;
+    private javax.swing.JLabel userName_lable1;
     private javax.swing.JTextField userName_text;
     // End of variables declaration//GEN-END:variables
 }

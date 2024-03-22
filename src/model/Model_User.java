@@ -18,53 +18,38 @@ public class Model_User {
     private int userId;
     private String userName;
     private String gender;
-    private String password;
     private String avtUrl;
-    private int numberPhone;
+    private int phoneNumber;
     
-    
-    public Model_User(){
-        
-    }
-    
-    public Model_User(int userId, String userName,String gender, String password, String avtUrl, int numberPhone) {
-        this.gender= gender;
+    public Model_User(int userId, String userName, String gender, String avtUrl, int phoneNumber) {
         this.userId = userId;
         this.userName = userName;
-        this.password = password;
+        this.gender = gender;
         this.avtUrl = avtUrl;
-        this.numberPhone = numberPhone;
+        this.phoneNumber = phoneNumber;
     }
-     private static boolean isValidUserName(String userName) {
-        // Add your username validation logic here
+    
+    // Validation methods
+    private static boolean isValidUserName(String userName) {
         return userName != null && !userName.isEmpty();
     }
+    
     public static boolean isValidPassword(String password) {
-        // Define a regular expression for the password rules
         String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$";
-
-        // Compile the regular expression
-        Pattern pattern = Pattern.compile(passwordRegex);
-
-        // Use the pattern to create a Matcher object
-        return pattern.matcher(password).matches();
+        return Pattern.compile(passwordRegex).matcher(password).matches();
     }
-     //    sdt
-     public static boolean isValidPhoneNumber(String phoneNumber) {
-         String phoneRegex = "^0\\d{9}$";
-
-        // Compile the regular expression
-        Pattern pattern = Pattern.compile(phoneRegex);
-
-        // Create a Matcher object
-        Matcher matcher = pattern.matcher(phoneNumber);
-
-        // Return true if the phone number matches the pattern
-        return matcher.matches();
+    
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        String phoneRegex = "^0\\d{9}$";
+        return Pattern.compile(phoneRegex).matcher(phoneNumber).matches();
     }
-      public static int convertStringToInt(String numberString) {
+    
+    // Utility methods
+    public static int convertStringToInt(String numberString) {
         return Integer.parseInt(numberString);
     }
+    
+    // Getters and setters
     public int getUserId() {
         return userId;
     }
@@ -73,37 +58,32 @@ public class Model_User {
         return userName;
     }
 
-    public String getPassword() {
-        return password;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getAvtUrl() {
         return avtUrl;
     }
 
-    public int getNumberPhone() {
-        return numberPhone;
-    }
-
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setAvtUrl(String avtUrl) {
         this.avtUrl = avtUrl;
     }
 
-    public void setNumberPhone(int numberPhone) {
-        this.numberPhone = numberPhone;
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
 //    public static int generateUniqueUserID() {

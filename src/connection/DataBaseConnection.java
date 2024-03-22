@@ -5,6 +5,7 @@
 package connection;
 
 import com.mysql.jdbc.Driver;
+import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,11 +16,11 @@ import java.sql.SQLException;
  * @author admin
  */
 public class DataBaseConnection {
-    private static DataBaseConnection instance;
+     private static DataBaseConnection instance;
     private Connection connection;
     
     private String hostName = "localhost:3306";
-    private String dbName = "test1";
+    private String dbName = "";
     private String userName = "root";
     private String password = "";
     private String connectionURL = "jdbc:mysql://" + hostName + "/" + dbName;
@@ -73,12 +74,11 @@ public class DataBaseConnection {
     }
 //  
 //    tao bang users
-    public void createTable() throws SQLException {
+    public void createTableUsers() throws SQLException {
         // SQL statement to create a table named "users"
        String sql = "CREATE TABLE IF NOT EXISTS " + dbName + ".users (" +
              "userID INT AUTO_INCREMENT PRIMARY KEY," +
              "userName VARCHAR(50) NOT NULL," +
-             "password VARCHAR(100) NOT NULL," +
              "numberPhone INT NOT NULL," +
              "gender VARCHAR(100) NOT NULL," + // Add a comma here
              "avt VARCHAR(255) DEFAULT 'default_avatar.jpg')" // Corrected default value syntax
@@ -93,6 +93,31 @@ public class DataBaseConnection {
             throw e;
         }
     }
+   public void createTableAccounts() throws SQLException {
+    // Câu lệnh SQL để tạo bảng có tên "accounts"
+    String sql = "CREATE TABLE IF NOT EXISTS " + dbName + ".accounts (" +
+                 "accountID INT AUTO_INCREMENT PRIMARY KEY," +
+                 "account VARCHAR(50) NOT NULL UNIQUE," +  // Thêm ràng buộc UNIQUE
+                 "password VARCHAR(100) NOT NULL," +
+                 "userID INT," +  // Thêm cột userID
+                 "FOREIGN KEY (userID) REFERENCES users(userID)" + // Thêm ràng buộc khóa ngoại
+                 ")";
+        
+    try (Statement statement = (Statement) connection.createStatement()) {
+        // Thực hiện câu lệnh SQL để tạo bảng
+        statement.executeUpdate(sql);
+        System.out.println("Table 'accounts' created successfully!");
+    } catch (SQLException e) {
+        System.out.println("Error creating table: " + e.getMessage());
+        throw e;
+    }
+}
+
+    public String getDbName() {
+        return dbName;
+    }
+
+
        /**
      * @return the connection
      */

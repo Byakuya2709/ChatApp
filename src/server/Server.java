@@ -34,7 +34,7 @@ public class Server {
         return instance;
     }
  
-    private Server() {
+   private Server() {
         ServerSocket socket;
        try {
            socket = new ServerSocket(PORT);
@@ -48,10 +48,12 @@ public class Server {
     
     public void serverStart(){
         try{
-                DataBaseConnection connection = DataBaseConnection.getInstance("test1");
+                DataBaseConnection connection = DataBaseConnection.getInstance("chatapp");
                 connection.connectToDatabase();
                 connection.createDatabaseIfNotExists();
-                connection.createTable();}
+                connection.createTableUsers();
+                connection.createTableAccounts();
+        }
         catch(SQLException e){
               System.out.println("Error when conneted to database.");  
         }

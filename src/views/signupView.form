@@ -66,38 +66,46 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="394" max="-2" attributes="0"/>
-                  <Component id="signup_btn" min="-2" pref="135" max="-2" attributes="0"/>
-                  <EmptySpace pref="261" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace pref="260" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="form_title" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="userName_lable1" min="-2" pref="138" max="-2" attributes="0"/>
+                              <Component id="fullName_text" min="-2" pref="360" max="-2" attributes="0"/>
+                              <Component id="userName_text" alignment="1" min="-2" pref="360" max="-2" attributes="0"/>
                               <Component id="passwordConfirm_lable" min="-2" pref="166" max="-2" attributes="0"/>
                               <Component id="password_lable1" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                               <Component id="passwordConfirm_text" alignment="0" min="-2" pref="360" max="-2" attributes="0"/>
                               <Component id="password_text" alignment="0" min="-2" pref="360" max="-2" attributes="0"/>
-                              <Component id="numberPhone_text" min="-2" pref="360" max="-2" attributes="0"/>
-                              <Component id="numberPhone_lable" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                               <Component id="userName_lable" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
-                              <Component id="userName_text" alignment="0" min="-2" pref="360" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" pref="105" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="genderMale" min="-2" pref="85" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="genderFemale" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="genderMale" min="-2" pref="85" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="genderFemale" min="-2" pref="85" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" min="-2" pref="105" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="numberPhone_lable" min="-2" pref="127" max="-2" attributes="0"/>
+                                      <Component id="numberPhone_text" min="-2" pref="166" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="form_title" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="signup_btn" min="-2" pref="135" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -106,24 +114,28 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="form_title" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="userName_lable1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="fullName_text" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="userName_lable" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="userName_text" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="numberPhone_lable" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="numberPhone_text" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="numberPhone_lable" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="genderMale" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="genderFemale" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="numberPhone_text" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="password_lable1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="password_text" min="-2" pref="40" max="-2" attributes="0"/>
@@ -133,7 +145,7 @@
                   <Component id="passwordConfirm_text" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="signup_btn" min="-2" pref="45" max="-2" attributes="0"/>
-                  <EmptySpace pref="63" max="32767" attributes="0"/>
+                  <EmptySpace pref="119" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -164,12 +176,12 @@
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Signup_userName_lable"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="userName_text">
+        <Component class="javax.swing.JTextField" name="fullName_text">
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
           </AccessibilityProperties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userName_textActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fullName_textActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Signup_userName_text"/>
@@ -256,6 +268,25 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Gi&#x1edb;i T&#xed;nh"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="userName_text">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userName_textActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Signup_userName_text"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="userName_lable1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="H&#x1ecd; v&#xe0; t&#xea;n"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Signup_userName_lable"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
